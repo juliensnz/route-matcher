@@ -41,17 +41,19 @@ const pathToRegExp = (path: string): RegExp => {
   return new RegExp(pattern, 'gi');
 };
 
+type RouteMatcherReturn = Promise<boolean | undefined | void> | boolean | undefined | void;
+
 type RouteMatcher = {
   match: <Path extends string>(
     path: Path,
-    callBack: (parameters: GetPathParams<Path>) => Promise<boolean | undefined | void>
+    callBack: (parameters: GetPathParams<Path>) => RouteMatcherReturn
   ) => RouteMatcher;
-  result: () => Promise<boolean | undefined | void>;
+  result: () => RouteMatcherReturn;
 };
 
 const routeMatcher = (urlToTest: string) => {
   // This matcher is used when the route has been matched to make sure that we don't execute other matchers
-  const completedMatcher = (result: Promise<boolean | undefined | void>): RouteMatcher => ({
+  const completedMatcher = (result: RouteMatcherReturn): RouteMatcher => ({
     match: (): RouteMatcher => completedMatcher(result),
     result: async (): Promise<boolean> => undefined === await result ? true : (await result as boolean),
   });
@@ -59,7 +61,7 @@ const routeMatcher = (urlToTest: string) => {
   const matcher: RouteMatcher = {
     match: <Path extends string>(
       path: Path,
-      callBack: (parameters: GetPathParams<Path>) => Promise<boolean | undefined | void>
+      callBack: (parameters: GetPathParams<Path>) => RouteMatcherReturn
     ): RouteMatcher => {
       const urlToTestWithoutQueryParameters = urlToTest.split('?')[0];
       const parametersMatches = path.match(/\/:([^/]+)/g);
