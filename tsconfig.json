@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "noUncheckedIndexedAccess": false,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "downlevelIteration": true,
+    "lib": ["es2019"],
+    "types": ["jest"],
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "commonjs",
+    "target": "es2019",
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "src/**/*.test.ts"
+  ]
+}
