@@ -1,6 +1,6 @@
 {
-  "name": "route-matcher",
-  "version": "1.0.0",
+  "name": "simple-route-matcher",
+  "version": "1.0.1",
   "description": "Extra simple route matcher",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "/dist"
   ],
   "license": "MIT",
-  "repository": "https://github.com/juliensnz/route-matcher",
+  "repository": "https://github.com/juliensnz/simple-route-matcher",
   "author": "Julien Sanchez",
   "private": false,
   "devDependencies": {
